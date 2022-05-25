@@ -2,7 +2,7 @@ import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
 const instance = basicLightbox.create(`
-    <img src=${original} width="800" height="600">
+    <img src="./gallery-items.js" width="800" height="600">
 `);
 
 instance.show();
@@ -23,38 +23,32 @@ const galleryMarkup = galleryItems
   </div>`
   )
   .join("");
-gallery.innerHTML(galleryMarkup);
-// const galleryMarkup = galleryItems.reduce(
-//   (acc, galleryItem) => acc + createGalleryItem(galleryItem),
-//   ""
-// );
-// gallery.insertAdjacentHTML("afterbegin", galleryMarkup);
-// instance.classList.add("gallery__image");
+gallery.innerHTML = galleryMarkup;
 
-// refs.gallery.addEventListener("click", onGalleryClick);
+gallery.addEventListener("click", onGalleryClick);
 // refs.btn.addEventListener("click", onClickHandlerClose);
 // refs.modal.addEventListener("click", closeLightbox);
 
-// function onGalleryClick(e) {
-//   e.preventDefault();
-//   if (e.target.nodeName !== "IMG") {
-//     return;
-//   }
-//   if (e.target.nodeName === "IMG") {
-//     refs.lightbox.classList.add("is-open");
-//     refs.lightbox__image.src = e.target.getAttribute("data-source");
-//     refs.lightbox__image.alt = e.target.alt;
-//   }
-//   window.addEventListener("keyup", clickKey);
-// }
+function onGalleryClick(event) {
+  event.preventDefault();
+  if (event.target.nodeName !== "IMG") {
+    return;
+  }
+  if (event.target.nodeName === "IMG") {
+    basicLightbox.classList.add("is-open");
+    gallery__image.src = event.target.getAttribute("data-source");
+    gallery__image.alt = event.target.alt;
+  }
+  window.addEventListener("keyup", clickKey);
+}
 
-// function onClickHandlerClose(e) {
-//   e.preventDefault();
-//   refs.lightbox.classList.remove("is-open");
-//   refs.lightbox__image.src = "";
-//   refs.lightbox__image.alt = "";
-//   window.removeEventListener("keyup", clickKey);
-// }
+function onClickHandlerClose(event) {
+  event.preventDefault();
+  // refs.lightbox.classList.remove("is-open");
+  // refs.lightbox__image.src = "";
+  // refs.lightbox__image.alt = "";
+  window.removeEventListener("keyup", clickKey);
+}
 
 function closeLightbox(event) {
   if (event.target === event.currentTarget) {
