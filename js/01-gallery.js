@@ -24,21 +24,40 @@ const galleryMarkup = galleryItems
   .join("");
 gallery.innerHTML = galleryMarkup;
 
-galleryItems.forEach((element) => {
-  element.addEventListener("click", function (event) {
-    instance.style.display = "block";
-    galleryMarkup.src = this.dataset.source;
-  });
+galleryItems.element.addEventListener("click", () => {
+  instance.show();
+  // instance.style.display = "block";
+  // gallery.src = this.dataset.source;
 });
-
-galleryItems.addEventListener("click", onGalleryClick);
-
+gallery.element.addEventListener("click", onGalleryClick);
 function onGalleryClick(event) {
   event.preventDefault();
   if (event.target.nodeName !== "IMG") {
     return;
   }
 }
+// gallery.forEach((element) => {
+//   element.addEventListener("click", function () {
+//     instance.style.display = "block";
+//     gallery.src = this.dataset.source;
+//   });
+// });
+// instance.show();
+// gallery.element.addEventListener("click", onGalleryClick);
+// function onGalleryClick(event) {
+//   event.preventDefault();
+//   if (event.target.nodeName !== "IMG") {
+//     return;
+//   }
+// }
+// instance.close(() => {
+//   instance.style.display = "none";
+// });
+// gallery.element.addEventListener("click", () => {
+//   instance.close();
+//   // instance.style.display = "none";
+// });
+
 // gallery.addEventListener("click", onGalleryClick);
 // refs.btn.addEventListener("click", onClickHandlerClose);
 // refs.modal.addEventListener("click", closeLightbox);
@@ -56,16 +75,14 @@ function onGalleryClick(event) {
 //   window.addEventListener("keyup", clickKey);
 // }
 
-function closeLightbox(event) {
-  if (event.target === event.currentTarget) {
-    onClickHandlerClose();
-  }
-}
+// function closeLightbox(event) {
+//   if (event.target === event.currentTarget) {
+//     onClickHandlerClose();
+//   }
+// }
 
-function clickKey(event) {
-  if (event.code === "Escape") {
-    onClickHandlerClose();
-  }
-}
-
-instance.show();
+// function clickKey(event) {
+//   if (event.code === "Escape") {
+//     onClickHandlerClose();
+//   }
+// }
