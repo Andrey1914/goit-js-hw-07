@@ -5,7 +5,6 @@ const instance = basicLightbox.create(`
     <img src="./gallery-items.js" width="800" height="600">
 `);
 
-instance.show();
 console.log(galleryItems);
 const gallery = document.querySelector(".gallery");
 const galleryMarkup = galleryItems
@@ -25,30 +24,37 @@ const galleryMarkup = galleryItems
   .join("");
 gallery.innerHTML = galleryMarkup;
 
-gallery.addEventListener("click", onGalleryClick);
-// refs.btn.addEventListener("click", onClickHandlerClose);
-// refs.modal.addEventListener("click", closeLightbox);
+galleryItems.forEach((element) => {
+  element.addEventListener("click", function (event) {
+    instance.style.display = "block";
+    galleryMarkup.src = this.dataset.source;
+  });
+});
+
+galleryItems.addEventListener("click", onGalleryClick);
 
 function onGalleryClick(event) {
   event.preventDefault();
   if (event.target.nodeName !== "IMG") {
     return;
   }
-  if (event.target.nodeName === "IMG") {
-    basicLightbox.classList.add("is-open");
-    gallery__image.src = event.target.getAttribute("data-source");
-    gallery__image.alt = event.target.alt;
-  }
-  window.addEventListener("keyup", clickKey);
 }
+// gallery.addEventListener("click", onGalleryClick);
+// refs.btn.addEventListener("click", onClickHandlerClose);
+// refs.modal.addEventListener("click", closeLightbox);
 
-function onClickHandlerClose(event) {
-  event.preventDefault();
-  // refs.lightbox.classList.remove("is-open");
-  // refs.lightbox__image.src = "";
-  // refs.lightbox__image.alt = "";
-  window.removeEventListener("keyup", clickKey);
-}
+// function onGalleryClick(event) {
+//   event.preventDefault();
+//   if (event.target.nodeName !== "IMG") {
+//     return;
+//   }
+//   if (event.target.nodeName === "IMG") {
+//     basicLightbox.classList.add("is-open");
+//     gallery__image.src = event.target.getAttribute("data-source");
+//     gallery__image.alt = event.target.alt;
+//   }
+//   window.addEventListener("keyup", clickKey);
+// }
 
 function closeLightbox(event) {
   if (event.target === event.currentTarget) {
@@ -61,3 +67,5 @@ function clickKey(event) {
     onClickHandlerClose();
   }
 }
+
+instance.show();
