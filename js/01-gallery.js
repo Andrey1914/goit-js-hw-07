@@ -29,17 +29,24 @@ function onGalleryClick(event) {
   }
 
   if (event.target.nodeName === "IMG") {
-    const instance = basicLightbox.create(`
+    const instance = basicLightbox.create(
+      `
     <img src="${event.target.dataset.source}" width="800" height="600">
-`);
+`
+      // {
+      //   onShow: (instance) => {
+      //     instance.element().querySelector("img").onclick = instance.close;
+      //   },
+      // }
+    );
     instance.show();
   }
 }
 
-gallery.addEventListener("click", clickKey);
+// gallery.dataset.source.addEventListener("keyup", clickKey);
 
-function clickKey(event) {
-  if (event.code === "Escape") {
-    const instance = instance.close();
-  }
-}
+// function clickKey(event) {
+//   if (event.code === "Escape") {
+//     instance.close();
+//   }
+// }
