@@ -1,0 +1,61 @@
+body {
+  background-image: url("../images/bg-main-page.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.section {
+  padding: 245px 0 0;
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    padding: 285px 0 0;
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  .section {
+    padding: 300px 0 0;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0 90px;
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  .container {
+    padding: 0 200px;
+  }
+}
+
+.link {
+  font-family: "Montserrat Subrayada";
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .link {
+    font-size: 24px;
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  .link {
+    font-size: 42px;
+  }
+}
+
+.link:hover :focus {
+  color: rgb(98, 191, 250);
+}
